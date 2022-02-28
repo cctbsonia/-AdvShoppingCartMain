@@ -21,12 +21,13 @@ def setUp():
     # Navigating to the Advantage Shopping website
     driver.get(locators.adshop_url)
 
+
     # Print test start day and time
     if driver.current_url == locators.adshop_url:
         print(f'Test start at: {datetime.datetime.now()}')
 
     # Checking we are on the correct URL address and we are seeing correct title
-    if driver.current_url == locators.adshop_url and driver.find_element(By.XPATH, '//title[contains(., "Advantage Shopping")]'):
+    if driver.current_url == locators.adshop_url and driver.title == ' Advantage Shopping':
         print(f'We are at Advantage Shopping homepage -- {driver.current_url}')
         print(f'We\'re seeing title message -- {driver.title}')
     else:
