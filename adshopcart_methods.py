@@ -152,13 +152,13 @@ def check_re_login():
         print('Check your code for error.')
 
 
-setUp()
-signUp()
-check_my_account_display_full_name()
-check_no_order()
-sign_out()
-log_in()
-delete_account()
-check_re_login()
-tearDown()
+# setUp()
+# signUp()
+# check_my_account_display_full_name()
+# check_no_order()
+# sign_out()
+# log_in()
+# delete_account()
+# check_re_login()
+# tearDown()
 
