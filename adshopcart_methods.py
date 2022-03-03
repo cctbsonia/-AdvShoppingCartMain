@@ -37,15 +37,15 @@ def setUp():
         driver.close()
         driver.quit()
 
+
 # Fixture method - to close web browser
-
-
 def tearDown():
     if driver is not None:
         print(f'------------------------------------')
         print(f'Test Completed at: {datetime.datetime.now()}')
         driver.close()
         driver.quit()
+
 
 def signUp():
     driver.find_element(By.ID, 'menuUser').click()
@@ -149,10 +149,104 @@ def check_re_login():
         print(f'------------------------------------')
         print(f'Re-login failed. Test passed. ')
     else:
-        print('Check your code for error.')
+        print(f'Check your code for error.')
 
+
+def check_homepage():
+    # Check if Speakers, Tablets, Laptops, Mice, Headphones text are displayed
+    if driver.find_element(By.ID,'speakersTxt').is_displayed:
+        print(f'------------------------------------')
+        print(f'Speakers text displayed')
+    else:
+        print('Error found. Check your code')
+    if driver.find_element(By.ID,'tabletsTxt').is_displayed:
+        print(f'------------------------------------')
+        print(f'Tablets text displayed')
+    else:
+        print('Error found. Check your code')
+    if driver.find_element(By.ID,'laptopsTxt').is_displayed:
+        print(f'------------------------------------')
+        print(f'Laptops text displayed')
+    else:
+        print('Error found. Check your code')
+    if driver.find_element(By.ID,'miceTxt').is_displayed:
+        print(f'------------------------------------')
+        print(f'Mice text displayed')
+    else:
+        print('Error found. Check your code')
+    if driver.find_element(By.ID,'headphonesTxt').is_displayed:
+        print(f'------------------------------------')
+        print(f'Headphones text displayed')
+    else:
+        print('Error found. Check your code')
+    sleep(3)
+
+def check_top_menu():
+    # Check if Special Offer link is clickable
+    driver.find_element(By.LINK_TEXT, 'SPECIAL OFFER').click()
+    sleep(2)
+    if driver.find_element(By.XPATH, "//*[text() = 'SPECIAL OFFER']").is_displayed:
+        print(f'------------------------------------')
+        print(f'Special Offer link is clickable')
+    else:
+        print('Error found. Check your code')
+    # Check if Our Products link is clickable
+    driver.find_element(By.LINK_TEXT, 'OUR PRODUCTS').click()
+    sleep(2)
+    if driver.find_element(By.ID,'speakersTxt').is_displayed:
+        print(f'------------------------------------')
+        print(f'Our Products link is clickable')
+    else:
+        print('Error found. Check your code')
+    # Check if Popular Items link is clickable
+    driver.find_element(By.LINK_TEXT,'POPULAR ITEMS').click()
+    sleep(2)
+    if driver.find_element(By.XPATH, "//*[text() = 'POPULAR ITEMS']").is_displayed:
+         print(f'------------------------------------')
+         print(f'Popular Items link is clickable')
+    else:
+         print('Error found. Check your code')
+    # Check if Contact Us link is clickable
+    driver.find_element(By.LINK_TEXT,'CONTACT US').click()
+    sleep(2)
+    if driver.find_element(By.XPATH, "//*[text() = 'CONTACT US']").is_displayed:
+         print(f'------------------------------------')
+         print(f'Contact Us link is clickable')
+    else:
+         print('Error found. Check your code')
+
+
+def check_logo():
+    if driver.find_element(By.XPATH, "//*[text() = 'DEMO']").is_displayed and driver.find_element(By.XPATH, "//*[text() = 'dvantage']").is_displayed:
+        print(f'------------------------------------')
+        print(f'Main Logo is displayed.')
+    else:
+        print(f'Error found. Check your code')
+
+
+def check_contact_us_form():
+    driver.find_element(By.NAME, 'categoryListboxContactUs').click()
+    sleep(2)
+    Select(driver.find_element(By.NAME, 'categoryListboxContactUs')).select_by_visible_text('Laptops')
+    driver.find_element(By.NAME, 'productListboxContactUs').click()
+    sleep(2)
+    Select(driver.find_element(By.NAME, 'productListboxContactUs')).select_by_visible_text('HP ENVY - 17t Touch Laptop')
+    sleep(2)
+    driver.find_element(By.NAME,'emailContactUs').send_keys(locators.email)
+    sleep(2)
+    driver.find_element(By.NAME,'subjectTextareaContactUs').send_keys(locators.description)
+    sleep(2)
+    driver.find_element(By.ID,'send_btnundefined').click()
+    # Check if Continue Shopping button is displayed after submitting contact us form
+    if driver.find_element(By.LINK_TEXT,'CONTINUE SHOPPING').is_displayed:
+        print(f'------------------------------------')
+        print('Contact Us form successfully submitted.')
 
 # setUp()
+# check_homepage()
+# check_top_menu()
+# check_logo()
+# check_contact_us_form()
 # signUp()
 # check_my_account_display_full_name()
 # check_no_order()

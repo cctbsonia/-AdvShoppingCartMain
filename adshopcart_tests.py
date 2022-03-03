@@ -7,6 +7,10 @@ class AdvantageShoppingAppPositiveTestCases(unittest.TestCase):
     @staticmethod
     def test_main_advantage_shopping():
         methods.setUp()
+        methods.check_homepage()
+        methods.check_top_menu()
+        methods.check_logo()
+        methods.check_contact_us_form()
         methods.signUp()
         methods.check_my_account_display_full_name()
         methods.check_no_order()

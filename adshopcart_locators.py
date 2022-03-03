@@ -18,6 +18,8 @@ address = fake.street_address()
 phone = fake.phone_number()
 province = fake.province_abbr()
 postal_code = fake.postcode()
+description = fake.sentence(nb_words=100)
+
 
 
 
