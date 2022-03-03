@@ -49,9 +49,9 @@ def tearDown():
 
 def signUp():
     driver.find_element(By.ID, 'menuUser').click()
-    sleep(3)
+    sleep(2)
     driver.find_element(By.LINK_TEXT, 'CREATE NEW ACCOUNT').click()
-    sleep(3)
+    sleep(2)
     driver.find_element(By.NAME, 'usernameRegisterPage').send_keys(locators.new_username)
     sleep(0.25)
     driver.find_element(By.NAME, 'emailRegisterPage').send_keys(locators.email)
@@ -81,11 +81,11 @@ def signUp():
     driver.find_element(By.NAME,'i_agree').click()
     sleep(0.25)
     driver.find_element(By.ID,'register_btnundefined').click()
-    sleep(3)
-    driver.find_element(By.ID, 'menuUser').click()
-    sleep(3)
-    driver.find_element(By.XPATH, '//*[@id="loginMiniTitle"]/label[1]').click()
     sleep(2)
+    driver.find_element(By.ID, 'menuUser').click()
+    sleep(2.5)
+    driver.find_element(By.XPATH, '//*[@id="loginMiniTitle"]/label[1]').click()
+    sleep(1)
 
 
 def check_my_account_display_full_name():
@@ -111,38 +111,38 @@ def sign_out():
     driver.find_element(By.ID, 'menuUser').click()
     sleep(3)
     driver.find_element(By.XPATH, '//*[@id="loginMiniTitle"]/label[3]').click()
-    sleep(3)
+    sleep(2)
 
 def log_in():
     driver.find_element(By.ID, 'menuUser').click()
-    sleep(3)
+    sleep(4)
     driver.find_element(By.NAME, 'username').send_keys(locators.new_username)
-    sleep(2)
+    sleep(1)
     driver.find_element(By.NAME, 'password').send_keys(locators.new_password)
-    sleep(2)
+    sleep(1)
     driver.find_element(By.ID,'sign_in_btnundefined').click()
     sleep(2)
 
 
 def delete_account():
     driver.find_element(By.ID, 'menuUser').click()
-    sleep(3)
-    driver.find_element(By.XPATH, '//*[@id="loginMiniTitle"]/label[1]').click()
     sleep(2)
+    driver.find_element(By.XPATH, '//*[@id="loginMiniTitle"]/label[1]').click()
+    sleep(1.5)
     driver.execute_script("window.scrollTo(1000,1000 )")
     driver.find_element(By.XPATH, '//*[@id="myAccountContainer"]/div[6]/button/div').click()
-    sleep(5)
+    sleep(1.5)
     driver.find_element(By.XPATH, '//div[text()="yes"]').click()
-    sleep(5)
+    sleep(3)
 
 
 def check_re_login():
     driver.find_element(By.ID, 'menuUser').click()
-    sleep(3)
+    sleep(5)
     driver.find_element(By.NAME, 'username').send_keys(locators.new_username)
     sleep(2)
     driver.find_element(By.NAME, 'password').send_keys(locators.new_password)
-    sleep(2)
+    sleep(1)
     driver.find_element(By.ID, 'sign_in_btnundefined').click()
     sleep(5)
     if driver.find_element(By.ID,'signInResultMessage'):
@@ -184,7 +184,7 @@ def check_homepage():
 def check_top_menu():
     # Check if Special Offer link is clickable
     driver.find_element(By.LINK_TEXT, 'SPECIAL OFFER').click()
-    sleep(2)
+    sleep(1.5)
     if driver.find_element(By.XPATH, "//*[text() = 'SPECIAL OFFER']").is_displayed:
         print(f'------------------------------------')
         print(f'Special Offer link is clickable')
@@ -192,7 +192,7 @@ def check_top_menu():
         print('Error found. Check your code')
     # Check if Our Products link is clickable
     driver.find_element(By.LINK_TEXT, 'OUR PRODUCTS').click()
-    sleep(2)
+    sleep(1.5)
     if driver.find_element(By.ID,'speakersTxt').is_displayed:
         print(f'------------------------------------')
         print(f'Our Products link is clickable')
@@ -200,7 +200,7 @@ def check_top_menu():
         print('Error found. Check your code')
     # Check if Popular Items link is clickable
     driver.find_element(By.LINK_TEXT,'POPULAR ITEMS').click()
-    sleep(2)
+    sleep(1.5)
     if driver.find_element(By.XPATH, "//*[text() = 'POPULAR ITEMS']").is_displayed:
          print(f'------------------------------------')
          print(f'Popular Items link is clickable')
@@ -208,7 +208,7 @@ def check_top_menu():
          print('Error found. Check your code')
     # Check if Contact Us link is clickable
     driver.find_element(By.LINK_TEXT,'CONTACT US').click()
-    sleep(2)
+    sleep(1.5)
     if driver.find_element(By.XPATH, "//*[text() = 'CONTACT US']").is_displayed:
          print(f'------------------------------------')
          print(f'Contact Us link is clickable')
@@ -226,16 +226,16 @@ def check_logo():
 
 def check_contact_us_form():
     driver.find_element(By.NAME, 'categoryListboxContactUs').click()
-    sleep(2)
+    sleep(1)
     Select(driver.find_element(By.NAME, 'categoryListboxContactUs')).select_by_visible_text('Laptops')
     driver.find_element(By.NAME, 'productListboxContactUs').click()
-    sleep(2)
+    sleep(1)
     Select(driver.find_element(By.NAME, 'productListboxContactUs')).select_by_visible_text('HP ENVY - 17t Touch Laptop')
-    sleep(2)
+    sleep(1)
     driver.find_element(By.NAME,'emailContactUs').send_keys(locators.email)
-    sleep(2)
+    sleep(1)
     driver.find_element(By.NAME,'subjectTextareaContactUs').send_keys(locators.description)
-    sleep(2)
+    sleep(1)
     driver.find_element(By.ID,'send_btnundefined').click()
     # Check if Continue Shopping button is displayed after submitting contact us form
     if driver.find_element(By.LINK_TEXT,'CONTINUE SHOPPING').is_displayed:
